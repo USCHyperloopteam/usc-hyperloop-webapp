@@ -28,3 +28,4 @@ node_modules
 
 # Sails temporary directory
 .tmp
+.idea
