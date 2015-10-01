@@ -17,13 +17,13 @@
  * CoffeeScript for the front-end.
  *
  * For more information on configuring custom routes, check out:
- * http://sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html
+ * http://sailsjs.org/#!/documentation/concepts/Routes/RouteTargetSyntax.html
  */
 
 module.exports.routes = {
 
-  '/home': {
-    views: 'index'
+  '/': {
+    view: 'homepage'
   }
-
+  
 };
