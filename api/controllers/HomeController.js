@@ -5,8 +5,40 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-var $ = jQuery = require('jquery');
-require('./jquery.csv.js');
+var $ = require('jquery');
+var csv = require('csv');
+var fs = require('fs');
+
+/* temporary hashing out of parsing using csv parser
+//OPT1
+in = fs.createReadStream('./in')
+out = fs.createWriteStream('./out')
+in.pipe(csv()).pipe(out)
+
+
+//OPT2
+var csv = require('csv');
+var fs = require('fs');
+csv()
+.from.stream(fs.createReadStream(__dirname+'/sample.in'))
+.to.path(__dirname+'/sample.out')
+.transform( function(row){
+  row.unshift(row.pop());
+  return row;
+})
+.on('record', function(row,index){
+  console.log('#'+index+' '+JSON.stringify(row));
+})
+.on('end', function(count){
+  console.log('Number of lines: '+count);
+})
+.on('error', function(error){
+  console.log(error.message);
+});
+// #0 ["2000-01-01","20322051544","1979.0","8.8017226E7","ABC","45"]
+// #1 ["2050-11-27","28392898392","1974.0","8.8392926E7","DEF","23"]
+// Number of lines: 2
+*/
 
 var HomeController = {
 
