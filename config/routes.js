@@ -34,10 +34,6 @@ module.exports.routes = {
 
   '/video': {
     view: 'video'
-  },
-
-  '/controlpanel': {
-    view: 'controlpanel'
   }
 
 
