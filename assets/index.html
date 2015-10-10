@@ -11,17 +11,16 @@
 			</tr>
 		</table>
 	    
-	    <form >
+	    <!--<form >
 	      <input type="text" ng-model = "val" class="form-control" placeholder="TypeYourMessageHere">
           <button class="btn btn-default col-lg-2 col-md-2" ng-click="sendMsg()">Send</button>  
 
-	    </form>
+	    </form> -->
 	    
 
 	<script type="text/javascript" src="/js/dependencies/sails.io.js"></script>
-	<script type="text/javascript">
-	</script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+	<script src="/js/chance.js"></script>
 	<script type="text/javascript">
 
 		var socketApp = angular.module('socketApp',[]);
@@ -59,7 +58,6 @@
 			});
 
 			$scope.sendMsg = function(){
-				console.log( "hello");
 				$log.info($scope.val);
 				io.socket.post('/data/addData/',{val: $scope.val});
 				console.log( $scope.val);
@@ -67,5 +65,61 @@
 			};
 		}]);
 	</script>
+
+
+	<script type="text/javascript">
+
+		var startTime = new Date(); //Start time for reference if needed
+
+		function getCurrentTime() {
+			var c = new Date();
+			return c.toTimeString();
+		}
+
+		function generateData() {    //Create one data log (array) with numElements of data values
+			var my_chance = new Chance();
+			var time = getCurrentTime();
+    		var arr = [];
+    		arr.push(time);
+    		var numElements = 3;
+    		for (var i = 0; i < numElements; i++) {
+    			var temp = my_chance.floating({min: 0, max: 100, fixed: 2}).toString();  //Generates random float 0-100 with 2 decimal places
+    			arr.push(temp);
+    		}
+			return arr[arr.length - 1];
+		}
+
+		var realArr = [];
+		var isDone = false;
+		var count = 1;
+
+		function report () {           //  Writes data to HTML file
+  	 		setTimeout(function () {    //  call a 1second setTimeout when the loop is called
+
+    	  		realArr.push(generateData());
+    	  		//document.write(generateData()+"<br>");		//Prints one new log to the screen each second
+    	  		io.socket.post('/data/addData/',{val: generateData()});
+    	  		count++;                     //  increment the counter
+    	  		if (count < 100) {  
+    	  		          //  if the counter < 10, call the loop function
+    	   	  		report();             //  ..  again which will trigger another 
+     	 		}                        
+     	 		else {
+  	 				showArray();
+  	 				//writeCSV(realArr);
+  	 			}
+  	 		}, 1000);					//  ..  setTimeout()
+		}
+
+		report();
+
+		function showArray() {
+			realArr.forEach(function(entry) {
+				console.log(entry);
+			});
+		}
+
+	</script>
+
 </body>
 </html>

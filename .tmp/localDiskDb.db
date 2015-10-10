@@ -1,6 +1,189 @@
 {
   "data": {
-    "dashboardupdate": []
+    "dashboardupdate": [],
+    "chat": [],
+    "data": [
+      {
+        "val": "a",
+        "id": 1,
+        "createdAt": "2015-10-01T14:41:17.192Z",
+        "updatedAt": "2015-10-01T14:41:17.192Z"
+      },
+      {
+        "val": "a",
+        "id": 2,
+        "createdAt": "2015-10-01T14:41:19.138Z",
+        "updatedAt": "2015-10-01T14:41:19.138Z"
+      },
+      {
+        "val": "10.1",
+        "id": 3,
+        "createdAt": "2015-10-10T00:33:07.378Z",
+        "updatedAt": "2015-10-10T00:33:07.378Z"
+      },
+      {
+        "val": "61.25",
+        "id": 4,
+        "createdAt": "2015-10-10T00:33:08.378Z",
+        "updatedAt": "2015-10-10T00:33:08.378Z"
+      },
+      {
+        "val": "29.74",
+        "id": 5,
+        "createdAt": "2015-10-10T00:33:09.385Z",
+        "updatedAt": "2015-10-10T00:33:09.385Z"
+      },
+      {
+        "val": "7.66",
+        "id": 6,
+        "createdAt": "2015-10-10T00:33:10.391Z",
+        "updatedAt": "2015-10-10T00:33:10.391Z"
+      },
+      {
+        "val": "21.32",
+        "id": 7,
+        "createdAt": "2015-10-10T00:33:11.397Z",
+        "updatedAt": "2015-10-10T00:33:11.397Z"
+      },
+      {
+        "val": "3.99",
+        "id": 8,
+        "createdAt": "2015-10-10T00:33:12.399Z",
+        "updatedAt": "2015-10-10T00:33:12.399Z"
+      },
+      {
+        "val": "28.51",
+        "id": 9,
+        "createdAt": "2015-10-10T00:33:13.402Z",
+        "updatedAt": "2015-10-10T00:33:13.402Z"
+      },
+      {
+        "val": "12.17",
+        "id": 10,
+        "createdAt": "2015-10-10T00:33:14.408Z",
+        "updatedAt": "2015-10-10T00:33:14.408Z"
+      },
+      {
+        "val": "38.82",
+        "id": 11,
+        "createdAt": "2015-10-10T00:33:15.415Z",
+        "updatedAt": "2015-10-10T00:33:15.415Z"
+      },
+      {
+        "val": "85.93",
+        "id": 12,
+        "createdAt": "2015-10-10T00:44:24.774Z",
+        "updatedAt": "2015-10-10T00:44:24.774Z"
+      },
+      {
+        "val": "11.56",
+        "id": 13,
+        "createdAt": "2015-10-10T00:44:25.768Z",
+        "updatedAt": "2015-10-10T00:44:25.768Z"
+      },
+      {
+        "val": "18.34",
+        "id": 14,
+        "createdAt": "2015-10-10T00:44:26.774Z",
+        "updatedAt": "2015-10-10T00:44:26.774Z"
+      },
+      {
+        "val": "58.17",
+        "id": 15,
+        "createdAt": "2015-10-10T00:44:27.779Z",
+        "updatedAt": "2015-10-10T00:44:27.779Z"
+      },
+      {
+        "val": "43.8",
+        "id": 16,
+        "createdAt": "2015-10-10T00:44:28.782Z",
+        "updatedAt": "2015-10-10T00:44:28.782Z"
+      },
+      {
+        "val": "66.4",
+        "id": 17,
+        "createdAt": "2015-10-10T00:44:29.786Z",
+        "updatedAt": "2015-10-10T00:44:29.786Z"
+      },
+      {
+        "val": "62.52",
+        "id": 18,
+        "createdAt": "2015-10-10T00:44:30.789Z",
+        "updatedAt": "2015-10-10T00:44:30.789Z"
+      },
+      {
+        "val": "19.81",
+        "id": 19,
+        "createdAt": "2015-10-10T00:44:31.793Z",
+        "updatedAt": "2015-10-10T00:44:31.793Z"
+      },
+      {
+        "val": "16.26",
+        "id": 20,
+        "createdAt": "2015-10-10T00:44:32.798Z",
+        "updatedAt": "2015-10-10T00:44:32.798Z"
+      },
+      {
+        "val": "97.99",
+        "id": 21,
+        "createdAt": "2015-10-10T00:44:33.800Z",
+        "updatedAt": "2015-10-10T00:44:33.800Z"
+      },
+      {
+        "val": "55.74",
+        "id": 22,
+        "createdAt": "2015-10-10T00:44:34.805Z",
+        "updatedAt": "2015-10-10T00:44:34.805Z"
+      },
+      {
+        "val": "7.69",
+        "id": 23,
+        "createdAt": "2015-10-10T00:44:35.808Z",
+        "updatedAt": "2015-10-10T00:44:35.808Z"
+      },
+      {
+        "val": "16.78",
+        "id": 24,
+        "createdAt": "2015-10-10T00:44:36.810Z",
+        "updatedAt": "2015-10-10T00:44:36.810Z"
+      },
+      {
+        "val": "52.64",
+        "id": 25,
+        "createdAt": "2015-10-10T00:44:37.814Z",
+        "updatedAt": "2015-10-10T00:44:37.814Z"
+      },
+      {
+        "val": "58.48",
+        "id": 26,
+        "createdAt": "2015-10-10T00:44:38.820Z",
+        "updatedAt": "2015-10-10T00:44:38.820Z"
+      },
+      {
+        "val": "28.92",
+        "id": 27,
+        "createdAt": "2015-10-10T00:44:39.824Z",
+        "updatedAt": "2015-10-10T00:44:39.824Z"
+      },
+      {
+        "val": "99.67",
+        "id": 28,
+        "createdAt": "2015-10-10T00:44:40.828Z",
+        "updatedAt": "2015-10-10T00:44:40.828Z"
+      },
+      {
+        "val": "17.58",
+        "id": 29,
+        "createdAt": "2015-10-10T00:44:41.830Z",
+        "updatedAt": "2015-10-10T00:44:41.830Z"
+      },
+      {
+        "val": "58.42",
+        "id": 30,
+        "createdAt": "2015-10-10T00:44:42.836Z",
+        "updatedAt": "2015-10-10T00:44:42.836Z"
+      }
+    ]
   },
   "schema": {
     "dashboardupdate": {
@@ -25,9 +208,47 @@
       "updatedAt": {
         "type": "datetime"
       }
+    },
+    "chat": {
+      "message": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "data": {
+      "val": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
     }
   },
   "counters": {
-    "dashboardupdate": {}
+    "dashboardupdate": {},
+    "chat": {},
+    "data": {
+      "id": 30
+    }
   }
 }
