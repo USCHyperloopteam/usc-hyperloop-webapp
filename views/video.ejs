@@ -73,10 +73,13 @@
                             <!-- /input-group -->
                         </li>
                         <li>
+                            <a href="/"><i class="fa fa-table fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
                             <a href="video"><i class="fa fa-table fa-fw"></i> Video Output</a>
                         </li>
                         <li>
-                            <a href="controlpanel"><i class="fa fa-table fa-fw"></i> Control Panel</a>
+                            <a href="index.html"><i class="fa fa-table fa-fw"></i> Index</a>
                         </li>
                         
                     </ul>
@@ -91,7 +94,7 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             Exterior Video
                         </div>
@@ -106,7 +109,7 @@
                 </div>
                 <!-- /.col-lg-6 -->
                 <div class="col-lg-6">
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             Interior Video
                         </div>
@@ -121,85 +124,151 @@
                 <!-- /.col-lg-6 -->
             </div>
             <!-- /.row -->
-
-            <!-- /.row -->
             <div class="row">
+                <!-- /.col-lg-6 -->
                 <div class="col-lg-6">
-                    <div class="panel panel-default">
+                    <div class="panel panel-red">
                         <div class="panel-heading">
-                            Pod Output
+                            <i class="fa fa-bell fa-fw"></i> Pod Output
                         </div>
                         <!-- /.panel-heading -->
-                            Power On<br>
-                            Linking to GCS<br>
-                            GCS Ready ... on stand by<br>
-                            Linking to IMU ....<br>
-                            ERROR linking to IMU<br><br><br><br><br><br>
                         <div class="panel-body">
-                            
+                            <div class="list-group">
+                                <a class="list-group-item">
+                                    <i class="fa fa-comment fa-fw"></i> Power On
+                                    <span class="pull-right text-muted small"><em>11:11:11</em>
+                                    </span>
+                                </a>
+                                <a class="list-group-item">
+                                    <i class="fa fa-twitter fa-fw"></i> Established link to GCS
+                                    <span class="pull-right text-muted small"><em>11:11:20</em>
+                                    </span>
+                                </a>
+                                <a class="list-group-item">
+                                    <i class="fa fa-envelope fa-fw"></i> Starting Sensors
+                                    <span class="pull-right text-muted small"><em>11:11:30</em>
+                                    </span>
+                                </a>
+                                <a class="list-group-item">
+                                    <i class="fa fa-tasks fa-fw"></i> Air Bearing 1: Operational
+                                    <span class="pull-right text-muted small"><em>11:11:50</em>
+                                    </span>
+                                </a>
+                                <a class="list-group-item">
+                                    <i class="fa fa-upload fa-fw"></i> Air Bearing 2: Operational
+                                    <span class="pull-right text-muted small"><em>11:11:50</em>
+                                    </span>
+                                </a>
+                                <a class="list-group-item">
+                                    <i class="fa fa-bolt fa-fw"></i> Air Bearing 3: Operational
+                                    <span class="pull-right text-muted small"><em>11:11:50</em>
+                                    </span>
+                                </a>
+                            </div>
+                            <!-- /.list-group -->
+                            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
-                    <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-3 -->
                 <div class="col-lg-3">
-                    <div class="panel panel-default">
+                    <div class="panel panel-green">
                         <div class="panel-heading">
-                            Brake Status
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-2x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="pull-left">Inside Temperature</div><br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">73 Degrees F</span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            Functional
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <div class="panel panel-default">
+                <div class="col-lg-3">
+                    <div class="panel panel-green">
                         <div class="panel-heading">
-                            IMU
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-2x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="pull-left">Brake Status</div><br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">Functional</span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            ERROR
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
                     
-                </div>
-                <!-- /.col-lg-3 -->
 
                 <!-- /.col-lg-3 -->
                 <div class="col-lg-3">
-                    <div class="panel panel-default">
+                    <div class="panel panel-green">
                         <div class="panel-heading">
-                            Wheel 1
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-2x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="pull-left">Wheel 1</div><br>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            Functional
-                        </div>
-                        <!-- /.panel-body -->
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Functional</span>
+                                    <div class="clearfix"></div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="panel panel-default">
+                    <div class="panel panel-green">
                         <div class="panel-heading">
-                            Wheel 2
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-2x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="pull-left">Wheel 2</div><br>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            Functional
-                        </div>
-                        <!-- /.panel-body -->
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Functional</span>
+                                    <div class="clearfix"></div>
+                            </div>
+                        </a>
                     </div>
-
-                    <div class="panel panel-default">
+                    <div class="panel panel-green">
                         <div class="panel-heading">
-                            Wheel 3
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-2x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="pull-left">Wheel 3</div><br>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            Functional
-                        </div>
-                        <!-- /.panel-body -->
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Functional</span>
+                                    <div class="clearfix"></div>
+                            </div>
+                        </a>
                     </div>
                     
                 </div>
