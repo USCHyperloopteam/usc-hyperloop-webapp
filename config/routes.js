@@ -32,10 +32,34 @@ module.exports.routes = {
   *
   ***************************************************************************/
 
-  '/video': {
-    view: 'video'
+
+  '/live-data' : {
+    view: 'live-data'
+  },
+
+  '/pod-status' : {
+    view: 'pod-status'
+  },
+
+  '/live-video': {
+    view: 'live-video'
+  },
+
+  '/historical-data' : {
+    view: 'historical-data'
+  },
+  
+
+  '/charts' : {
+    view: 'charts'
+  },
+
+  '/historical-video': {
+    view: 'historical-video'
+  }, 
+
+  '/chat': {
+    view: 'chat'
   }
-
-
   
 };
