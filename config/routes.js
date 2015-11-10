@@ -58,6 +58,8 @@ module.exports.routes = {
     view: 'historical-video'
   }, 
 
+  'POST /test': 'HomeController.speedInput',
+
   '/chat': {
     view: 'chat'
   }

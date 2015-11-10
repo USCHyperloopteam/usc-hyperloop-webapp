@@ -8,6 +8,12 @@
 var $ = require('jquery');
 var csv = require('csv');
 var fs = require('fs');
+var AWS = require('aws-sdk');
+AWS.config.update({accessKeyId: 'AKIAJVCL2JBQXQ6JZ4YQ', secretAccessKey: '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'});
+AWS.config.update({region: 'us-west-2'});
+var db = new AWS.DynamoDB();
+
+
 
 /* temporary hashing out of parsing using csv parser
 //OPT1
@@ -78,7 +84,18 @@ var HomeController = {
 	// Use AJAX to post request to DB so we don't lose data if data streams in too quickly.
 	// Order of data will be post-sorted later. For now all that matters is all data makes it into DB
 	speedInput: function(req, res) {
-		var speedArray = $.csv.toObjects(req.params.name);
+		//var speedArray = $.csv.toObjects(req.params.name);
+		console.log("HERE");
+		
+		var item = {
+    		"time": {"S": "2008-03-09 16:05:07.123"},
+    		"value": {"N": "1234"}
+		}		
+		db.putItem({TableName: 'speed-info', Item: item}, function(err,data) {
+			if (err) console.log (err, err.stack);
+			else 	 console.log(data);
+		});
+
 	},
 
 	// Grab speed data out of filetype (tentatively csv) and send to GUI as well as store in DB
