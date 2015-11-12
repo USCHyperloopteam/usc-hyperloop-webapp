@@ -12,6 +12,8 @@ var AWS = require('aws-sdk');
 AWS.config.update({accessKeyId: 'AKIAJVCL2JBQXQ6JZ4YQ', secretAccessKey: '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'});
 AWS.config.update({region: 'us-west-2'});
 var db = new AWS.DynamoDB();
+var qs = require('querystring');
+
 
 
 
@@ -52,8 +54,7 @@ var HomeController = {
 	// POST requests
 	// Based on filename, route to correct function for processing.
 	input: function (req, res) {
-		
-		switch (req.params.name)
+		switch (req.body.name)
 		{
 			case "speed-info.csv":
 				return HomeController.speedInput(req, res);
@@ -85,15 +86,14 @@ var HomeController = {
 	// Order of data will be post-sorted later. For now all that matters is all data makes it into DB
 	speedInput: function(req, res) {
 		//var speedArray = $.csv.toObjects(req.params.name);
-		console.log("HERE");
-		
 		var item = {
-    		"time": {"S": "2008-03-09 16:05:07.123"},
-    		"value": {"N": "1234"}
+    		"time": {"S":req.body.time},
+    		"value": {"N":req.body.value},
+    		"run": {"N":req.body.run}
 		}		
 		db.putItem({TableName: 'speed-info', Item: item}, function(err,data) {
 			if (err) console.log (err, err.stack);
-			else 	 console.log(data);
+			else 	 res.send(200);
 		});
 
 	},
