@@ -10,7 +10,7 @@
 
 </head>
 
-<body>
+<body ng-app="socketApp" ng-controller="DataController">
 
     <div id="wrapper">
 
@@ -79,9 +79,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">0.0 | 0.0 | 0.0</span>
+                                <a>
+                                    <div class="panel-footer" ng-repeat="data in dataList | orderBy:predicate:reverse | limitTo: 3">
+                                        <span class="pull-left"> {{ data.val }}</span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -424,6 +424,109 @@
 
     </div>
     <!-- /#wrapper -->
+
+    <script type="text/javascript" src="/js/dependencies/sails.io.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+    <script src="/js/chance.js"></script>
+    <script type="text/javascript">
+
+        var socketApp = angular.module('socketApp',[]);
+
+        socketApp.controller('DataController',['$http','$log','$scope',function($http,$log,$scope){
+
+
+            $scope.predicate = '-id';
+            $scope.reverse = false;
+            $scope.baseUrl = 'http://localhost:1337';
+            $scope.dataList =[];
+            $scope.getAllData = function(){
+
+                io.socket.get('/data/addData');
+
+                $http.get($scope.baseUrl+'/data')
+                     .success(function(success_data){
+
+                            $scope.dataList = success_data;
+                            $log.info(success_data);
+                     });
+            };
+
+            $scope.getAllData();
+            $scope.val="";
+
+            io.socket.on('data',function(obj){
+
+                if(obj.verb === 'created'){
+                    $log.info(obj)
+                    $scope.dataList.push(obj.data);
+                    $scope.$digest();
+                }
+
+            });
+
+            $scope.sendMsg = function(){
+                $log.info($scope.val);
+                io.socket.post('/data/addData/',{val: $scope.val});
+                console.log( $scope.val);
+                $scope.val = "";
+            };
+        }]);
+    </script>
+
+
+    <script type="text/javascript">
+
+        var startTime = new Date(); //Start time for reference if needed
+
+        function getCurrentTime() {
+            var c = new Date();
+            return c.toTimeString();
+        }
+
+        function generateData() {    //Create one data log (array) with numElements of data values
+            var my_chance = new Chance();
+            var time = getCurrentTime();
+            var arr = [];
+            arr.push(time);
+            var numElements = 3;
+            for (var i = 0; i < numElements; i++) {
+                var temp = my_chance.floating({min: 0, max: 100, fixed: 2}).toString();  //Generates random float 0-100 with 2 decimal places
+                arr.push(temp);
+            }
+            return arr[arr.length - 1];
+        }
+
+        var realArr = [];
+        var isDone = false;
+        var count = 1;
+
+        function report () {           //  Writes data to HTML file
+            setTimeout(function () {    //  call a 1second setTimeout when the loop is called
+
+                realArr.push(generateData());
+                //document.write(generateData()+"<br>");        //Prints one new log to the screen each second
+                io.socket.post('/data/addData/',{val: generateData()});
+                count++;                     //  increment the counter
+                if (count < 100) {  
+                          //  if the counter < 10, call the loop function
+                    report();             //  ..  again which will trigger another 
+                }                        
+                else {
+                    showArray();
+                    //writeCSV(realArr);
+                }
+            }, 1000);                   //  ..  setTimeout()
+        }
+
+        report();
+
+        function showArray() {
+            realArr.forEach(function(entry) {
+                console.log(entry);
+            });
+        }
+
+    </script>
 
 </body>
 
