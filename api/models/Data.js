@@ -1,18 +1,15 @@
-/**
-* Chat.js
-*
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/#!documentation/models
-*/
+function Data() {
+	this.dataId = 0;
+	this.dataType = "";
+	this.dataTimestamp = "";
+	this.dataField = "";
+}
 
-module.exports = {
-
-	attributes: {
-  		val:{
-  			type:'string',
-  			required:false
-  		}
-  		
+Data.prototype = {
+	setFields: function(params) {
+		this.dataId = params.dataId;
+		this.dataType = params.dataType;
+		this.dataTimestamp = params.dataTimestamp;
+		this.dataField = params.dataField;
 	}
-};
-
+}
