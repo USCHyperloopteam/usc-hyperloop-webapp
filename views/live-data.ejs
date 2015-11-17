@@ -80,8 +80,8 @@
                                     </div>
                                 </div>
                                 <a>
-                                    <div class="panel-footer" ng-repeat="data in dataList | orderBy:predicate:reverse | limitTo: 3">
-                                        <span class="pull-left"> {{ data.val }}</span>
+                                    <div class="panel-footer">
+                                        <span class="pull-left"><%= livedata.yaw.value %> | <%= livedata.pitch.value %> | <%= livedata.roll.value %></span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -102,7 +102,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">0.0 | 0.0 | 0.0</span>
+                                        <span class="pull-left"><%= livedata.velocity.x %> | <%= livedata.velocity.y %> | <%= livedata.velocity.z %></span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -123,7 +123,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">0.0 | 0.0 | 0.0</span>
+                                        <span class="pull-left"><%= livedata.position.x %> | <%= livedata.position.y %> | <%= livedata.position.z %></span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -145,7 +145,10 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">100%</span>
+                                        <span class="pull-left">
+                                            <%= livedata.battery.value %>
+                                        %
+                                        </span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -165,7 +168,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">-88 dBm</span>
+                                        <span class="pull-left"><%= livedata.wifi.value %> dBm</span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -185,7 +188,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">88 kHr</span>
+                                        <span class="pull-left"><%= livedata.power.value %> kHr</span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>

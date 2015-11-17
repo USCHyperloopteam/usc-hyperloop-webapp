@@ -33,9 +33,8 @@ module.exports.routes = {
   ***************************************************************************/
 
 
-  '/live-data' : {
-    view: 'live-data'
-  },
+  '/live-data' : 
+    'HomeController.display',
 
   '/pod-status' : {
     view: 'pod-status'
@@ -62,6 +61,42 @@ module.exports.routes = {
 
   '/chat': {
     view: 'chat'
-  }
+  },
+
+  /***************************************************************************
+  *
+  * API Endpoints
+  *
+  ***************************************************************************/
+
+  /***************************************************************************
+  *
+  * Standard CRUD API for every model (data value in dashboard)
+  *
+  ***************************************************************************/
+
+  /**-------------------------------------------------------------------------
+  /** Creation
+  // localhost:1337/:MODEL/create?:PARAM1=:PARAM1ENTRY&:PARAM2=:PARAM2ENTRY&:PARAM3=:PARAM3ENTRY        ----- As many or as few params as you want
+
+  /** Update
+  // localhost:1337/:MODEL/update/:MODELID?:PARAM1=:PARAM1ENTRY&:PARAM2=:PARAM2ENTRY&:PARAM3=:PARAM3ENTRY        ----- As many or as few params as you want
+
+  /** Delete
+  // localhost:1337/:MODEL/destroy/:MODELID
+
+   -------------------------------------------------------------------------**/
   
+
+  /****************************************************************************
+  *
+  * Custom streaming endpoints
+  *
+  ****************************************************************************/
+
+  'POST /speed-stream' : {
+    //'SpeedController.startStream'
+  }
+
+
 };

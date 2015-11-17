@@ -140,8 +140,101 @@ var HomeController = {
 	// Based on datatype, return corresponding information
 	output: function (req, res) {
 
-	}
+	},
 
+	display: function(req, res) {
+
+		// Nested Queries
+		Yaw.find({}).exec( function findCB(err, yaw) {
+	    	var data = {};
+	        if (err) {
+	        	data.yaw = { value: -1 }
+	            return console.log('Error finding Yaw Model');
+	        }
+	        else {
+	            data.yaw = yaw[yaw.length - 1];
+	        }
+
+	        Pitch.find({}).exec( function findCB(err, pitch) {
+		        if (err) {
+		        	data.pitch = { value: -1 }
+		            return console.log('Error finding Pitch Model');
+		        }
+		        else {
+		            data.pitch = pitch[pitch.length - 1];
+		        }
+
+		        Roll.find({}).exec( function findCB(err, roll) {
+			        if (err) {
+			        	data.roll = { value: -1 }
+			            return console.log('Error finding Roll Model');
+			        }
+			        else {
+			            data.roll = roll[roll.length - 1];
+			        }
+
+			        Battery.find({}).exec( function findCB(err, batt) {
+			    	
+				        if (err) {
+				        	data.batt = { value: -1 }
+				            return console.log('Error finding Battery Model');
+				        }
+				        else {
+				            data.battery = batt[batt.length - 1];
+				        }
+
+				        Wifi.find({}).exec( function findCB(err, wifi) {
+			    	
+					        if (err) {
+					        	data.wifi = { value: -1 }
+					            return console.log('Error finding Wifi Model');
+					        }
+					        else {
+					            data.wifi = wifi[wifi.length - 1];
+					        }
+
+					        Power.find({}).exec( function findCB(err, power) {
+			    	
+						        if (err) {
+						        	data.power = { value: -1 }
+						            return console.log('Error finding Power Model');
+						        }
+						        else {
+						            data.power = power[power.length - 1];
+						        }
+
+						        Velocity.find({}).exec( function findCB(err, velocity) {
+			    	
+							        if (err) {
+							        	data.velocity = { x: -1, y: -1, z: -1 }
+							            return console.log('Error finding Velocity Model');
+							        }
+							        else {
+							            data.velocity = velocity[velocity.length - 1];
+							        }
+
+							    	Position.find({}).exec( function findCB(err, position) {
+			    	
+								        if (err) {
+								        	data.position = { x: -1, y: -1, z: -1 }
+								            return console.log('Error finding Position Model');
+								        }
+								        else {
+								            data.position = position[position.length - 1];
+								        }
+
+								       	return res.view ('live-data', {
+									    	livedata: data
+									    })
+								    });
+							    });
+						    });
+					    });
+			        });
+			    });
+		    });
+	    });
+	}
 };
 
 
