@@ -1,7 +1,8 @@
 # Running Instructions
 1. install node.js (https://nodejs.org/en/)
-2. 'npm install'
-3. sails lift
+2. download and unzip application
+3. navigate to application folder and run 'npm install'
+4. run 'sails lift' in the same folder
 
 
 
