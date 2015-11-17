@@ -1,8 +1,8 @@
 # Running Instructions
-
-1. Clone repo
-2. 'npm install'
-3. sails lift
+1. install node.js (https://nodejs.org/en/)
+2. Clone repo
+3. 'npm install'
+4. sails lift
 
 
 
