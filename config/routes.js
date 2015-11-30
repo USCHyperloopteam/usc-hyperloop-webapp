@@ -22,81 +22,36 @@
 
 module.exports.routes = {
 
+  /***************************************************************************
+  *                                                                          *
+  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
+  * etc. depending on your default view engine) your home page.              *
+  *                                                                          *
+  * (Alternatively, remove this and add an `index.html` file in your         *
+  * `assets` directory)                                                      *
+  *                                                                          *
+  ***************************************************************************/
+
   '/': {
     view: 'homepage'
   },
 
   /***************************************************************************
-  *
-  * Custom Routes
-  *
+  *                                                                          *
+  * Custom routes here...                                                    *
+  *                                                                          *
+  * If a request to a URL doesn't match any of the custom routes above, it   *
+  * is matched against Sails route blueprints. See `config/blueprints.js`    *
+  * for configuration options and examples.                                  *
+  *                                                                          *
   ***************************************************************************/
 
-
-  '/live-data' : 
-    'HomeController.display',
-
-  '/pod-status' : {
-    view: 'pod-status'
+  '/live-data' : {
+    view: 'live-data'
   },
-
-  '/live-video': {
-    view: 'live-video'
-  },
-
-  '/historical-data' : {
-    view: 'historical-data'
-  },
-  
-
-  '/charts' : {
-    view: 'charts'
-  },
-
-  '/historical-video': {
-    view: 'historical-video'
-  }, 
 
   'POST /test': 'HomeController.input',
 
-  '/chat': {
-    view: 'chat'
-  },
-
-  /***************************************************************************
-  *
-  * API Endpoints
-  *
-  ***************************************************************************/
-
-  /***************************************************************************
-  *
-  * Standard CRUD API for every model (data value in dashboard)
-  *
-  ***************************************************************************/
-
-  /**-------------------------------------------------------------------------
-  /** Creation
-  // localhost:1337/:MODEL/create?:PARAM1=:PARAM1ENTRY&:PARAM2=:PARAM2ENTRY&:PARAM3=:PARAM3ENTRY        ----- As many or as few params as you want
-
-  /** Update
-  // localhost:1337/:MODEL/update/:MODELID?:PARAM1=:PARAM1ENTRY&:PARAM2=:PARAM2ENTRY&:PARAM3=:PARAM3ENTRY        ----- As many or as few params as you want
-
-  /** Delete
-  // localhost:1337/:MODEL/destroy/:MODELID
-
-   -------------------------------------------------------------------------**/
-  
-
-  /****************************************************************************
-  *
-  * Custom streaming endpoints
-  *
-  ****************************************************************************/
-
-  'POST /speed-stream' : {
-    //'SpeedController.startStream'
-  }
-
+  'GET /test': 'YawController.getLatestValue'
 
 };

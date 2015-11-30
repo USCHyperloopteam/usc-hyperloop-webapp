@@ -8,9 +8,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+
 </head>
 
-<body ng-app="socketApp" ng-controller="DataController">
+<body ng-app="DashboardApp">
+
+
 
     <div id="wrapper">
 
@@ -30,34 +35,34 @@
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="nav-collapse sidebar-nav">
-					<ul class="nav nav-tabs nav-stacked main-menu">
-						<li><a href="/"><i class="icon-dashboard"></i><span class="hidden-tablet"> Home </span></a></li>	
-						<li>
-							<a class="dropmenu"><i class="icon-eye-open"></i><span class="hidden-tablet"> Live Stream Data </span></a>
-							<ul>
-								<li><a class="submenu" href="live-data"><i class="icon-dashboard"></i><span> Pod Dashboard </span></a></li>
-								<li><a class="submenu" href="pod-status"><i class="icon-envelope"></i><span> Pod Status Messages </span></a></li>
-								<li><a class="submenu" href="live-video"><i class="icon-picture"></i><span> Video Output </span></a></li>
-							</ul>	
-						</li>
-						<li>
-							<a class="dropmenu"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Historical Data </span></a>
-							<ul>
-								<li><a class="submenu" href="historical-data"><i class="icon-dashboard"></i><span class="hidden-tablet"> Historical Dashboard </span></a></li>
-								<li><a class="submenu" href="charts"><i class="icon-list-alt"></i><span class="hidden-tablet"> Charts </span></a></li>
-								<li><a class="submenu" href="historical-video"><i class="icon-picture"></i><span class="hidden-tablet"> Video Output </span></a></li>
-							</ul>	
-						</li>
-						<li><a href="chat"><i class="icon-envelope"></i><span class="hidden-tablet"> Chat </span></a></li>
-					</ul>
-				</div>
+                    <ul class="nav nav-tabs nav-stacked main-menu">
+                        <li><a href="/"><i class="icon-dashboard"></i><span class="hidden-tablet"> Home </span></a></li>    
+                        <li>
+                            <a class="dropmenu"><i class="icon-eye-open"></i><span class="hidden-tablet"> Live Stream Data </span></a>
+                            <ul>
+                                <li><a class="submenu" href="live-data"><i class="icon-dashboard"></i><span> Pod Dashboard </span></a></li>
+                                <li><a class="submenu" href="pod-status"><i class="icon-envelope"></i><span> Pod Status Messages </span></a></li>
+                                <li><a class="submenu" href="live-video"><i class="icon-picture"></i><span> Video Output </span></a></li>
+                            </ul>   
+                        </li>
+                        <li>
+                            <a class="dropmenu"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Historical Data </span></a>
+                            <ul>
+                                <li><a class="submenu" href="historical-data"><i class="icon-dashboard"></i><span class="hidden-tablet"> Historical Dashboard </span></a></li>
+                                <li><a class="submenu" href="charts"><i class="icon-list-alt"></i><span class="hidden-tablet"> Charts </span></a></li>
+                                <li><a class="submenu" href="historical-video"><i class="icon-picture"></i><span class="hidden-tablet"> Video Output </span></a></li>
+                            </ul>   
+                        </li>
+                        <li><a href="chat"><i class="icon-envelope"></i><span class="hidden-tablet"> Chat </span></a></li>
+                    </ul>
+                </div>
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
         </nav>
 
         <div id="page-wrapper">
-        	<div class="row">
+            <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Dashboard</h1>
                 </div>
@@ -79,9 +84,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a>
+                                <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left"><%= livedata.yaw.value %> | <%= livedata.pitch.value %> | <%= livedata.roll.value %></span>
+                                        <div class="clearfix"></div>
+                                        <div ng-controller="YPRCtrl">
+                                            <span class="pull-left"> {{ yaw }} | {{ pitch }} | {{ roll }} </span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -102,7 +110,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left"><%= livedata.velocity.x %> | <%= livedata.velocity.y %> | <%= livedata.velocity.z %></span>
+                                        <span class="pull-left">0.0 | 0.0 | 0.0</span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -123,7 +131,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left"><%= livedata.position.x %> | <%= livedata.position.y %> | <%= livedata.position.z %></span>
+                                        <span class="pull-left">0.0 | 0.0 | 0.0</span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -145,10 +153,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">
-                                            <%= livedata.battery.value %>
-                                        %
-                                        </span>
+                                        <span class="pull-left">100%</span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -168,7 +173,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left"><%= livedata.wifi.value %> dBm</span>
+                                        <span class="pull-left">-88 dBm</span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -188,7 +193,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left"><%= livedata.power.value %> kHr</span>
+                                        <span class="pull-left">88 kHr</span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -427,109 +432,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-    <script type="text/javascript" src="/js/dependencies/sails.io.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
-    <script src="/js/chance.js"></script>
-    <script type="text/javascript">
-
-        var socketApp = angular.module('socketApp',[]);
-
-        socketApp.controller('DataController',['$http','$log','$scope',function($http,$log,$scope){
-
-
-            $scope.predicate = '-id';
-            $scope.reverse = false;
-            $scope.baseUrl = 'http://localhost:1337';
-            $scope.dataList =[];
-            $scope.getAllData = function(){
-
-                io.socket.get('/data/addData');
-
-                $http.get($scope.baseUrl+'/data')
-                     .success(function(success_data){
-
-                            $scope.dataList = success_data;
-                            $log.info(success_data);
-                     });
-            };
-
-            $scope.getAllData();
-            $scope.val="";
-
-            io.socket.on('data',function(obj){
-
-                if(obj.verb === 'created'){
-                    $log.info(obj)
-                    $scope.dataList.push(obj.data);
-                    $scope.$digest();
-                }
-
-            });
-
-            $scope.sendMsg = function(){
-                $log.info($scope.val);
-                io.socket.post('/data/addData/',{val: $scope.val});
-                console.log( $scope.val);
-                $scope.val = "";
-            };
-        }]);
-    </script>
-
-
-    <script type="text/javascript">
-
-        var startTime = new Date(); //Start time for reference if needed
-
-        function getCurrentTime() {
-            var c = new Date();
-            return c.toTimeString();
-        }
-
-        function generateData() {    //Create one data log (array) with numElements of data values
-            var my_chance = new Chance();
-            var time = getCurrentTime();
-            var arr = [];
-            arr.push(time);
-            var numElements = 3;
-            for (var i = 0; i < numElements; i++) {
-                var temp = my_chance.floating({min: 0, max: 100, fixed: 2}).toString();  //Generates random float 0-100 with 2 decimal places
-                arr.push(temp);
-            }
-            return arr[arr.length - 1];
-        }
-
-        var realArr = [];
-        var isDone = false;
-        var count = 1;
-
-        function report () {           //  Writes data to HTML file
-            setTimeout(function () {    //  call a 1second setTimeout when the loop is called
-
-                realArr.push(generateData());
-                //document.write(generateData()+"<br>");        //Prints one new log to the screen each second
-                io.socket.post('/data/addData/',{val: generateData()});
-                count++;                     //  increment the counter
-                if (count < 100) {  
-                          //  if the counter < 10, call the loop function
-                    report();             //  ..  again which will trigger another 
-                }                        
-                else {
-                    showArray();
-                    //writeCSV(realArr);
-                }
-            }, 1000);                   //  ..  setTimeout()
-        }
-
-        report();
-
-        function showArray() {
-            realArr.forEach(function(entry) {
-                console.log(entry);
-            });
-        }
-
-    </script>
 
 </body>
 

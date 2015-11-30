@@ -8,10 +8,6 @@
 var $ = require('jquery');
 var csv = require('csv');
 var fs = require('fs');
-var AWS = require('aws-sdk');
-AWS.config.update({accessKeyId: 'AKIAJVCL2JBQXQ6JZ4YQ', secretAccessKey: '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'});
-AWS.config.update({region: 'us-west-2'});
-var db = new AWS.DynamoDB();
 var qs = require('querystring');
 
 
@@ -59,13 +55,13 @@ var HomeController = {
 			case "speed-info.csv":
 				return HomeController.speedInput(req, res);
 
-			case "pitch-info.csv":
+			case "pitch":
 				return HomeController.pitchInput(req, res);
 
-			case "yaw-info.csv":
+			case "yaw":
 				return HomeController.yawInput(req, res);
 
-			case "roll-info.csv":
+			case "roll":
 				return HomeController.rollInput(req, res);
 
 			case "x-y-info.csv":
@@ -85,9 +81,7 @@ var HomeController = {
 	// Use AJAX to post request to DB so we don't lose data if data streams in too quickly.
 	// Order of data will be post-sorted later. For now all that matters is all data makes it into DB
 	speedInput: function(req, res) {
-		//var speedArray = $.csv.toObjects(req.params.name);
 		var item = {
-    		"time": {"S":req.body.time},
     		"value": {"N":req.body.value},
     		"run": {"N":req.body.run}
 		}		
@@ -101,22 +95,45 @@ var HomeController = {
 	// Grab speed data out of filetype (tentatively csv) and send to GUI as well as store in DB
 	// Use AJAX to post request to DB so we don't lose data if data streams in too quickly.
 	// Order of data will be post-sorted later. For now all that matters is all data makes it into DB
-	pitchInput: function(req, res) {
-		var pitchArray = $.csv.toObjects(req.params.name);
+	pitchInput: function(req, res, next) {
+		var item = {
+    		"value": {"N":parseFloat(req.body.value)},
+    		"run": {"N":parseInt(req.body.run)}
+		}
+		Pitch.create(req.params.all(), function yawAdded (err, pitch) {
+			if (err) console.log (err, err.stack);
+			else res.json(pitch)
+		});
 	},
 
 	// Grab speed data out of filetype (tentatively csv) and send to GUI as well as store in DB
 	// Use AJAX to post request to DB so we don't lose data if data streams in too quickly.
 	// Order of data will be post-sorted later. For now all that matters is all data makes it into DB
-	yawInput: function(req, res) {
-		var yawInput = $.csv.toObjects(req.params.name);
+	yawInput: function(req, res, next) {
+		var item = {
+    		"value": {"N":parseFloat(req.body.value)},
+    		"run": {"N":parseInt(req.body.run)}
+		}
+		Yaw.create(req.params.all(), function yawAdded (err, yaw) {
+			if (err) console.log (err, err.stack);
+			else res.json(yaw)
+		});
+		console.log("success");
 	},
 
 	// Grab speed data out of filetype (tentatively csv) and send to GUI as well as store in DB
 	// Use AJAX to post request to DB so we don't lose data if data streams in too quickly.
 	// Order of data will be post-sorted later. For now all that matters is all data makes it into DB
-	rollInput: function(req, res) {
-		var rollInput = $.csv.toObjects(req.params.name)
+	rollInput: function(req, res, next) {
+		var item = {
+    		"value": {"N":parseFloat(req.body.value)},
+    		"run": {"N":parseInt(req.body.run)}
+		}
+		Roll.create(req.params.all(), function yawAdded (err, roll) {
+			if (err) console.log (err, err.stack);
+			else res.json(roll)
+		});
+		console.log("success");
 	},
 
 	// Grab speed data out of filetype (tentatively csv) and send to GUI as well as store in DB
@@ -142,7 +159,7 @@ var HomeController = {
 
 	},
 
-	display: function(req, res) {
+	/*display: function(req, res) {
 
 		// Nested Queries
 		Yaw.find({}).exec( function findCB(err, yaw) {
@@ -234,7 +251,7 @@ var HomeController = {
 			    });
 		    });
 	    });
-	}
+	}*/
 };
 
 

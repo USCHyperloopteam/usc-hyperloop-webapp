@@ -1,12 +1,12 @@
 {
-  "name": "socket-in-sails",
+  "name": "test",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
-    "aws-sdk": "^2.2.16",
-    "csv": "0.4.6",
+    "angular": "^1.4.8",
+    "csv": "^0.4.6",
     "ejs": "~0.8.4",
     "grunt": "0.4.2",
     "grunt-contrib-clean": "~0.5.0",
@@ -20,22 +20,23 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-sails-linker": "~0.9.5",
     "grunt-sync": "~0.0.4",
+    "handlebars": "^4.0.5",
     "include-all": "~0.1.3",
-    "jquery": "^1.11.3",
-    "rc": "~0.3.3",
+    "jquery": "^2.1.4",
+    "rc": "~0.5.0",
     "request-json": "^0.5.3",
-    "sails": "~0.10.0-rc11",
+    "sails": "~0.11.3",
     "sails-disk": "~0.10.0"
   },
   "scripts": {
-    "start": "node app.js",
-    "debug": "node debug app.js"
+    "debug": "node debug app.js",
+    "start": "sails lift"
   },
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/USCHyperloopteam/usc-hyperloop-webapp.git"
+    "url": "git://github.com/Kartik/test.git"
   },
-  "author": "USCHyperloopteam",
+  "author": "Kartik",
   "license": ""
 }
