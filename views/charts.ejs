@@ -57,7 +57,7 @@
         </nav>
 
         <div id="page-wrapper">
-        	
+        	<div id="pod_data_chart" class="span9"></div>
         </div>
         <!-- /#page-wrapper -->
 
@@ -67,3 +67,47 @@
 </body>
 
 </html>
+
+<script type="text/javascript"
+      src="https://www.google.com/jsapi?autoload={
+        'modules':[{
+          'name':'visualization',
+          'version':'1',
+          'packages':['corechart']
+        }]
+      }">
+</script>
+
+<script type="text/javascript">
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var mVals = httpGetData("http://localhost:1337/Yaw/");
+        var mJsonArr = JSON.parse(mVals);
+        
+        var mChartData = [['Time', 'Yaw'], [0,0]];
+        for(var i=0; i < mJsonArr.length; i++) {
+            mChartData.push([i, mJsonArr[i].value]);
+        }
+
+        var data = google.visualization.arrayToDataTable(mChartData);
+
+        var options = {
+          title: 'Run 1: Pod Data',
+          legend: { position: 'right' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('pod_data_chart'));
+
+        chart.draw(data, options);
+    }
+
+    function httpGetData(mUrl){
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", mUrl, false); // true for asynchronous 
+        xmlHttp.send(null);
+        return xmlHttp.responseText;
+    }
+
+</script>
+
