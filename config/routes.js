@@ -58,6 +58,10 @@ module.exports.routes = {
     view: 'live-video'
   },
 
+  '/historical-video': {
+    view: 'historical-video'
+  }, 
+
   '/charts' : {
     view: 'charts'
   },
