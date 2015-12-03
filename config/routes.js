@@ -50,6 +50,18 @@ module.exports.routes = {
     view: 'live-data'
   },
 
+  '/historical-data' : {
+    view: 'historical-data'
+  },
+
+  '/live-video': {
+    view: 'live-video'
+  },
+
+  '/charts' : {
+    view: 'charts'
+  },
+
   'POST /test': 'HomeController.input',
 
   'GET /test': 'YawController.getLatestValue'

@@ -6,9 +6,14 @@
 */
 
 module.exports = {
-
   attributes: {
-
+  	value: {
+  		type: 'float',
+  		required: true
+  	},
+  	run: {
+  		type: 'integer',
+  		required: true
+  	}
   }
 };
-

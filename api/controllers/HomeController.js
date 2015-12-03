@@ -52,8 +52,8 @@ var HomeController = {
 	input: function (req, res) {
 		switch (req.body.name)
 		{
-			case "speed-info.csv":
-				return HomeController.speedInput(req, res);
+			case "velocity":
+				return HomeController.velocityInput(req, res);
 
 			case "pitch":
 				return HomeController.pitchInput(req, res);
@@ -64,8 +64,26 @@ var HomeController = {
 			case "roll":
 				return HomeController.rollInput(req, res);
 
-			case "x-y-info.csv":
-				return HomeController.xyInput(req, res);
+			case "position":
+				return HomeController.positionInput(req, res);
+
+			case "power":
+				return HomeController.powerInput(req, res);
+
+			case "wifi":
+				return HomeController.wifiInput(req, res);
+
+			case "battery":
+				return HomeController.batteryInput(req, res);
+
+			case "load":
+				return HomeController.loadInput(req, res);
+
+			case "pressure":
+				return HomeController.pressureInput(req, res);
+
+			case "temperature":
+				return HomeController.temperatureInput(req, res);
 
 			case "other-info.csv":
 				return HomeController.otherInput(req, res);
@@ -80,16 +98,18 @@ var HomeController = {
 	// Grab speed data out of filetype (tentatively csv) and send to GUI as well as store in DB
 	// Use AJAX to post request to DB so we don't lose data if data streams in too quickly.
 	// Order of data will be post-sorted later. For now all that matters is all data makes it into DB
-	speedInput: function(req, res) {
+	velocityInput: function(req, res) {
 		var item = {
-    		"value": {"N":req.body.value},
+    		"x": {"N":req.body.x},
+    		"y": {"N":req.body.y},
+    		"z": {"N":req.body.z},
     		"run": {"N":req.body.run}
 		}		
-		db.putItem({TableName: 'speed-info', Item: item}, function(err,data) {
+		Velocity.create(req.params.all(), function velocityAdded (err, velocity) {
 			if (err) console.log (err, err.stack);
-			else 	 res.send(200);
+			else res.json(velocity)
 		});
-
+		console.log("success");
 	},
 
 	// Grab speed data out of filetype (tentatively csv) and send to GUI as well as store in DB
@@ -100,10 +120,11 @@ var HomeController = {
     		"value": {"N":parseFloat(req.body.value)},
     		"run": {"N":parseInt(req.body.run)}
 		}
-		Pitch.create(req.params.all(), function yawAdded (err, pitch) {
+		Pitch.create(req.params.all(), function pitchAdded (err, pitch) {
 			if (err) console.log (err, err.stack);
 			else res.json(pitch)
 		});
+		console.log("success");
 	},
 
 	// Grab speed data out of filetype (tentatively csv) and send to GUI as well as store in DB
@@ -129,7 +150,7 @@ var HomeController = {
     		"value": {"N":parseFloat(req.body.value)},
     		"run": {"N":parseInt(req.body.run)}
 		}
-		Roll.create(req.params.all(), function yawAdded (err, roll) {
+		Roll.create(req.params.all(), function rollAdded (err, roll) {
 			if (err) console.log (err, err.stack);
 			else res.json(roll)
 		});
@@ -139,8 +160,93 @@ var HomeController = {
 	// Grab speed data out of filetype (tentatively csv) and send to GUI as well as store in DB
 	// Use AJAX to post request to DB so we don't lose data if data streams in too quickly.
 	// Order of data will be post-sorted later. For now all that matters is all data makes it into DB
-	xyInput: function(req, res) {
-		var xyInput = $.csv.toObjects(req.params.name)
+	positionInput: function(req, res) {
+		var item = {
+    		"x": {"N":req.body.x},
+    		"y": {"N":req.body.y},
+    		"z": {"N":req.body.z},
+    		"run": {"N":req.body.run}
+		}		
+		Position.create(req.params.all(), function positionAdded (err, position) {
+			if (err) console.log (err, err.stack);
+			else res.json(position)
+		});
+		console.log("success");
+	},
+
+	powerInput: function(req, res, next) {
+		var item = {
+    		"value": {"N":parseFloat(req.body.value)},
+    		"run": {"N":parseInt(req.body.run)}
+		}
+		Power.create(req.params.all(), function powerAdded (err, power) {
+			if (err) console.log (err, err.stack);
+			else res.json(power)
+		});
+		console.log("success");
+	},
+
+	wifiInput: function(req, res, next) {
+		var item = {
+    		"value": {"N":parseFloat(req.body.value)},
+    		"run": {"N":parseInt(req.body.run)}
+		}
+		Wifi.create(req.params.all(), function wifiAdded (err, wifi) {
+			if (err) console.log (err, err.stack);
+			else res.json(wifi)
+		});
+		console.log("success");
+	},
+
+	batteryInput: function(req, res, next) {
+		var item = {
+    		"value": {"N":parseFloat(req.body.value)},
+    		"run": {"N":parseInt(req.body.run)}
+		}
+		Battery.create(req.params.all(), function batteryAdded (err, battery) {
+			if (err) console.log (err, err.stack);
+			else res.json(battery)
+		});
+		console.log("success");
+	},
+
+	loadInput: function(req, res, next) {
+		var item = {
+    		"value": {"N":parseFloat(req.body.value)},
+    		"number": {"N":parseFloat(req.body.number)},
+    		"run": {"N":parseInt(req.body.run)}
+		}
+		Load.create(req.params.all(), function loadAdded (err, load) {
+			if (err) console.log (err, err.stack);
+			else res.json(load)
+		});
+		console.log("success");
+	},
+
+	pressureInput: function(req, res, next) {
+		var item = {
+    		"value": {"N":parseFloat(req.body.value)},
+    		"number": {"N":parseFloat(req.body.number)},
+    		"run": {"N":parseInt(req.body.run)}
+		}
+		Pressure.create(req.params.all(), function pressureAdded (err, pressure) {
+			if (err) console.log (err, err.stack);
+			else res.json(pressure)
+		});
+		console.log("success");
+	},
+
+	temperatureInput: function(req, res, next) {
+		var item = {
+    		"value": {"N":parseFloat(req.body.value)},
+    		"type": {"S":parseFloat(req.body.type)},
+    		"run": {"N":parseInt(req.body.run)}
+		}
+		Temperature.create(req.params.all(), function temperatureAdded (err, temperature) {
+			if (err) console.log (err, err.stack);
+			else res.json(temperature)
+		});
+		console.log("success");
 	},
 
 	// Grab speed data out of filetype (tentatively csv) and send to GUI as well as store in DB
@@ -159,99 +265,6 @@ var HomeController = {
 
 	},
 
-	/*display: function(req, res) {
-
-		// Nested Queries
-		Yaw.find({}).exec( function findCB(err, yaw) {
-	    	var data = {};
-	        if (err) {
-	        	data.yaw = { value: -1 }
-	            return console.log('Error finding Yaw Model');
-	        }
-	        else {
-	            data.yaw = yaw[yaw.length - 1];
-	        }
-
-	        Pitch.find({}).exec( function findCB(err, pitch) {
-		        if (err) {
-		        	data.pitch = { value: -1 }
-		            return console.log('Error finding Pitch Model');
-		        }
-		        else {
-		            data.pitch = pitch[pitch.length - 1];
-		        }
-
-		        Roll.find({}).exec( function findCB(err, roll) {
-			        if (err) {
-			        	data.roll = { value: -1 }
-			            return console.log('Error finding Roll Model');
-			        }
-			        else {
-			            data.roll = roll[roll.length - 1];
-			        }
-
-			        Battery.find({}).exec( function findCB(err, batt) {
-			    	
-				        if (err) {
-				        	data.batt = { value: -1 }
-				            return console.log('Error finding Battery Model');
-				        }
-				        else {
-				            data.battery = batt[batt.length - 1];
-				        }
-
-				        Wifi.find({}).exec( function findCB(err, wifi) {
-			    	
-					        if (err) {
-					        	data.wifi = { value: -1 }
-					            return console.log('Error finding Wifi Model');
-					        }
-					        else {
-					            data.wifi = wifi[wifi.length - 1];
-					        }
-
-					        Power.find({}).exec( function findCB(err, power) {
-			    	
-						        if (err) {
-						        	data.power = { value: -1 }
-						            return console.log('Error finding Power Model');
-						        }
-						        else {
-						            data.power = power[power.length - 1];
-						        }
-
-						        Velocity.find({}).exec( function findCB(err, velocity) {
-			    	
-							        if (err) {
-							        	data.velocity = { x: -1, y: -1, z: -1 }
-							            return console.log('Error finding Velocity Model');
-							        }
-							        else {
-							            data.velocity = velocity[velocity.length - 1];
-							        }
-
-							    	Position.find({}).exec( function findCB(err, position) {
-			    	
-								        if (err) {
-								        	data.position = { x: -1, y: -1, z: -1 }
-								            return console.log('Error finding Position Model');
-								        }
-								        else {
-								            data.position = position[position.length - 1];
-								        }
-
-								       	return res.view ('live-data', {
-									    	livedata: data
-									    })
-								    });
-							    });
-						    });
-					    });
-			        });
-			    });
-		    });
-	    });
-	}*/
 };
 
 

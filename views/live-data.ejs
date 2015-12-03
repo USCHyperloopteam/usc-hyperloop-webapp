@@ -68,6 +68,66 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+
+
+
+
+
+
+
+          <!--<div layout="row">
+            <div flex>
+              <md-card>
+                <img class="md-card" >
+                
+                <md-card-content style="background-color:#999999;">
+                  <p>
+                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                  </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                  <md-button>Action 1</md-button>
+                  <md-button>Action 2</md-button>
+                </md-card-actions>
+
+                <md-card-title>
+                  <md-card-title-text>
+                    <span class="md-headline">Yaw | Pitch | Roll</span>
+                  </md-card-title-text>
+                </md-card-title>
+              </md-card>
+            </div>
+            <div flex>
+              <md-card>
+                <img class="md-card" >
+                <md-card-title>
+                  <md-card-title-text>
+                    <span class="md-headline">Yaw | Pitch | Roll</span>
+                  </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                  <p>
+                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                  </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                  <md-button>Action 1</md-button>
+                  <md-button>Action 2</md-button>
+                </md-card-actions>
+              </md-card>
+            </div>
+            
+          </div>
+        </div>
+        -->
+
+
+
+
+
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-8">
@@ -86,8 +146,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <div class="clearfix"></div>
-                                        <div ng-controller="YPRCtrl">
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
                                             <span class="pull-left"> {{ yaw }} | {{ pitch }} | {{ roll }} </span>
                                         </div>
                                         <div class="clearfix"></div>
@@ -110,7 +169,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">0.0 | 0.0 | 0.0</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> {{ velX }} | {{ velY }} | {{ velX }} </span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -131,7 +192,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">0.0 | 0.0 | 0.0</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> {{ posX }} | {{ posY }} | {{ posZ }} </span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -153,7 +216,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">100%</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> {{ battery }}%</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -173,7 +238,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">-88 dBm</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> {{ wifi }} dBm</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -193,7 +260,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">88 kHr</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> {{ power }} kHr</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -215,7 +284,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Struct 1: 200lbs</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> Struct 1: {{ load1 }} lbs</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -235,7 +306,33 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Struct 2: 200lbs</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> Struct 2: {{ load2 }} lbs</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-2x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div ng-controller="DashboardCtrl" ng-cloak>
+                                                <span class="pull-left"> Struct 2: {{ load2 }} lbs</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer">
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> Struct 3: {{ load3 }} lbs</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -255,7 +352,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Struct 3: 200lbs</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> Struct 4: {{ load4 }} lbs</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -275,7 +374,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Struct 4: 200lbs</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> Struct 5: {{ load5 }} lbs</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -295,27 +396,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Struct 5: 200lbs</span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="panel panel-red">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-comments fa-2x"></i>
+                                        <div ng-controller="DashboardCtrl" ng-cloak> 
+                                            <span class="pull-left"> Struct 6: {{ load6 }} lbs</span>
                                         </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="pull-left">Load</div><br>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Struct 6: 200lbs</span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -337,7 +420,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">73 Degrees F</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> {{ temperature1 }} Degrees F</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -357,7 +442,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">99 Degrees F</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> {{ temperature2 }} Degrees F</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -380,7 +467,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">270PSI</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> {{ pressure1 }} PSI</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -400,7 +489,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">270PSI</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> {{ pressure2 }} PSI</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -420,7 +511,9 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">270PSI</span>
+                                        <div ng-controller="DashboardCtrl" ng-cloak>
+                                            <span class="pull-left"> {{ pressure3 }} PSI</span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -428,6 +521,7 @@
                         </div>
                     </div>
                 </div>
+        </div>
         <!-- /#page-wrapper -->
 
     </div>
